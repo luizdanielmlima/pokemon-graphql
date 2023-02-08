@@ -1,0 +1,38 @@
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.abilities {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.abilityItem {
+  padding: 0 6px;
+  border-radius: 5px;
+}
+
+.abilityItem:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+}
+
+.legend__indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #95a6ae;
+  border-radius: 2px;
+}
+
+.legend__label {
+  margin-left: 4px;
+  margin-top: 2px;
+}

@@ -8,7 +8,7 @@ interface GraphQLPokemonResponse<
   data: Record<K, Omit<Query[K], '__typename'>>;
 }
 
-const useGetPokemons = (from: number = 88, limit: number = 32) => {
+const useGetPokemons = (from: number = 88, limit: number = 16) => {
   // const GET_POKEMONS = gql`
   //   query getAllPokemon($offset: Int, $take: Int) {
   //     key

@@ -8,35 +8,13 @@ interface GraphQLPokemonResponse<
   data: Record<K, Omit<Query[K], '__typename'>>;
 }
 
-const useGetPokemons = (from: number = 88, limit: number = 32) => {
-  // const GET_POKEMONS = gql`
-  //   query getAllPokemon($offset: Int, $take: Int) {
-  //     key
-  //     weight
-  //     height
-  //     sprite
-  //     baseStats {
-  //       attack
-  //       defense
-  //       hp
-  //       specialattack
-  //       specialdefense
-  //       speed
-  //     }
-  //   }
-  // `;
-
+const useGetPokemons = (offset: number = 0, limit: number = 16) => {
   const GET_POKEMONS = gql`
     {
-      getAllPokemon(offset: ${from}, take: ${limit}) {
-        key
-        num
+      getAllPokemon(offset: ${offset}, take: ${limit}) {
         sprite
         weight
         height
-        types {
-          name
-        }
         abilities {
           first {
             name
@@ -53,6 +31,10 @@ const useGetPokemons = (from: number = 88, limit: number = 32) => {
           specialdefense
           speed
         }
+        key
+        types {
+          name
+        }
       }
     }
   `;
@@ -62,13 +44,10 @@ const useGetPokemons = (from: number = 88, limit: number = 32) => {
   >(GET_POKEMONS, {
     client: apolloClient,
   });
-  // const { loading, error, data } = useQuery(GET_POKEMONS, {
-  //   client: apolloClient,
-  //   variables: { offset: from, take: limit },
-  // });
+  // const { loading, error, data } = useQuery(GET_POKEMONS);
 
   return {
-    pokemons: data,
+    pokemons: data?.data?.getAllPokemon,
     pokemonsLoading: loading,
     pokemonsError: error,
   };
