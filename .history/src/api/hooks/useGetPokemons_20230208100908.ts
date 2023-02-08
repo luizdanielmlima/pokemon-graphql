@@ -9,20 +9,20 @@ interface GraphQLPokemonResponse<
 }
 
 const useGetPokemon = (pokemonKey?: string | number) => {
-  const GET_POKEMON = gql`
+  const GET_POKEMON_DETAILS = gql`
     {
         getPokemon(pokemon: ${pokemonKey}) {
-          sprite
-          num
-          species
-          color
+        sprite
+        num
+        species
+        color
         }
     }
     `;
 
   const { loading, error, data } = useQuery<
     GraphQLPokemonResponse<'getPokemon'>
-  >(GET_POKEMON, {
+  >(GET_POKEMON_DETAILS, {
     client: apolloClient,
   });
 

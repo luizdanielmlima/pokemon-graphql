@@ -4,7 +4,7 @@ import useGetPokemons from '../../api/hooks/useGetPokemons';
 
 const Test = () => {
   const { pokemonsLoading, pokemonsError, pokemons } =
-    useGetPokemons();
+    useGetPokemons('pikachu');
 
   if (pokemonsLoading) return <p>'Loading...'</p>;
   if (pokemonsError) return <p>`Error! ${pokemonsError.message}`</p>;

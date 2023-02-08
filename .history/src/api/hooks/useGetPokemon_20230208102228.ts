@@ -12,10 +12,10 @@ const useGetPokemon = (pokemonKey?: string | number) => {
   const GET_POKEMON = gql`
     {
         getPokemon(pokemon: ${pokemonKey}) {
-          sprite
-          num
-          species
-          color
+        sprite
+        num
+        species
+        color
         }
     }
     `;
