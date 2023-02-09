@@ -54,7 +54,9 @@ const PokemonBaseStats = (props: PokemonBaseStatsProps) => {
                 }}
               ></div>
             </div>
-            <p className={classes.statItem__value}>{baseStat[1]}</p>
+            <p className={classes.statItem__value}>
+              {baseStat.base_stat}
+            </p>
           </div>
         );
       });

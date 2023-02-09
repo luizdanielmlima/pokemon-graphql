@@ -1,8 +1,8 @@
-import React from 'react';
-
 import { Pokemon } from '@favware/graphql-pokemon';
-
+import React from 'react';
 import { statsColors } from '../../shared/colors';
+
+import { PokemonPageItemProps } from '../../shared/model';
 import classes from './PokemonBaseStats.module.css';
 
 interface PokemonBaseStatsProps {
@@ -54,7 +54,9 @@ const PokemonBaseStats = (props: PokemonBaseStatsProps) => {
                 }}
               ></div>
             </div>
-            <p className={classes.statItem__value}>{baseStat[1]}</p>
+            <p className={classes.statItem__value}>
+              {baseStat.base_stat}
+            </p>
           </div>
         );
       });

@@ -1,8 +1,8 @@
-import React from 'react';
-
 import { Pokemon } from '@favware/graphql-pokemon';
+import React from 'react';
+import { baseStatsColors } from '../../shared/colors';
 
-import { statsColors } from '../../shared/colors';
+import { PokemonPageItemProps } from '../../shared/model';
 import classes from './PokemonBaseStats.module.css';
 
 interface PokemonBaseStatsProps {
@@ -26,7 +26,7 @@ const PokemonBaseStats = (props: PokemonBaseStatsProps) => {
   const getBarColor = (statName: string | undefined) => {
     let color = '#395FAA';
     if (statName) {
-      const itemFound = statsColors.find(
+      const itemFound = baseStatsColors.find(
         (item) => item.name === statName,
       );
       color = itemFound ? itemFound.color : '#395FAA';
@@ -36,9 +36,8 @@ const PokemonBaseStats = (props: PokemonBaseStatsProps) => {
 
   let content;
   if (baseStats) {
-    content = Object.entries(baseStats)
-      .filter((item) => item[0] !== '__typename')
-      .map((baseStat: any, index: number) => {
+    content = Object.entries(baseStats).map(
+      (baseStat: any, index: number) => {
         return (
           <div
             className={classes.statItem}
@@ -54,10 +53,13 @@ const PokemonBaseStats = (props: PokemonBaseStatsProps) => {
                 }}
               ></div>
             </div>
-            <p className={classes.statItem__value}>{baseStat[1]}</p>
+            <p className={classes.statItem__value}>
+              {baseStat.base_stat}
+            </p>
           </div>
         );
-      });
+      },
+    );
   }
 
   return (
