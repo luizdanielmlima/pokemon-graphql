@@ -1,6 +1,4 @@
-import React, { FC } from 'react';
-
-import { Pokemon } from '@favware/graphql-pokemon';
+import React from 'react';
 
 import { PokemonPageItemProps } from '../../shared/model';
 import classes from './PokemonMiscInfo.module.css';
@@ -22,7 +20,9 @@ const InfoItem = (props: InfoItemProps) => {
   );
 };
 
-const PokemonMiscInfo: FC<{ data: Pokemon }> = ({ data }) => {
+const PokemonMiscInfo = (props: PokemonPageItemProps) => {
+  const { data } = props;
+
   const convUnit = (value: number | undefined) => {
     //   height is in decimeters and weight is in hectograms!
     return value ? value / 10 : null;
@@ -38,7 +38,7 @@ const PokemonMiscInfo: FC<{ data: Pokemon }> = ({ data }) => {
       <div className={classes.items}>
         <InfoItem
           label={`Base EXP:`}
-          value={data?.baseStatsTotal}
+          value={data?.base_experience}
           unit={null}
         />
         <InfoItem
@@ -53,14 +53,10 @@ const PokemonMiscInfo: FC<{ data: Pokemon }> = ({ data }) => {
         />
         <InfoItem
           label={`Species:`}
-          value={data?.species}
+          value={data?.species?.name}
           unit={null}
         />
-        <InfoItem
-          label={`Evolution Level:`}
-          value={data?.evolutionLevel}
-          unit={null}
-        />
+        <InfoItem label={`Order:`} value={data?.order} unit={null} />
       </div>
     </div>
   );

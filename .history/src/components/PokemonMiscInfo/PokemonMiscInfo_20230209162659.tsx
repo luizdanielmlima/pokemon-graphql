@@ -61,6 +61,11 @@ const PokemonMiscInfo: FC<{ data: Pokemon }> = ({ data }) => {
           value={data?.evolutionLevel}
           unit={null}
         />
+        <InfoItem
+          label={`Levelling Rate:`}
+          value={data?.levellingRate}
+          unit={null}
+        />
       </div>
     </div>
   );
