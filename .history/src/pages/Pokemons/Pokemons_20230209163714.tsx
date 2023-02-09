@@ -23,6 +23,7 @@ const Pokemons = () => {
 
   const { pokemonsLoading, pokemonsError, pokemons } =
     useGetPokemons();
+  console.log('pokemons: ', pokemons);
 
   const navToPokemonPage = (pkmon: Pokemon) => {
     const id = pkmon.key;

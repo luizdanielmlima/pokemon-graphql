@@ -21,7 +21,7 @@ const Pokemon = (props: any) => {
     params?.id,
   );
   // TO-DO: Must check this Typescript error, it shouldn't happen !
-  // console.log('pokemon.getPokemon: ', pokemon?.getPokemon);
+  console.log('pokemon.getPokemon: ', pokemon?.getPokemon);
 
   useEffect(() => {
     window.scrollTo(0, 0);

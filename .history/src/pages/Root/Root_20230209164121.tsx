@@ -68,7 +68,7 @@ const RootPage = () => {
               Luiz Daniel Lima
             </a>
             &nbsp; with React v.18.2 ... and &hearts; ! on Feb 2023.
-            Data from @favware/graphql-pokemon. I hope you enjoy!
+            Data from @favware/graphql-pokemon I hope you enjoy!
           </p>
         </footer>
       </div>

@@ -62,6 +62,10 @@
 }
 
 .pokemon__img > img {
+  /* width: 96px;
+  height: 96px; */
+  width: 128px;
+  height: 128px;
   filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.5));
 }
 
