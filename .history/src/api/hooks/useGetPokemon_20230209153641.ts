@@ -49,7 +49,7 @@ const useGetPokemon = (pokemonKey?: string | number) => {
   console.log('useGetPokemon data: ', data);
 
   return {
-    pokemon: data,
+    pokemon: data?.getPokemon,
     pokemonLoading: loading,
     pokemonError: error,
   };

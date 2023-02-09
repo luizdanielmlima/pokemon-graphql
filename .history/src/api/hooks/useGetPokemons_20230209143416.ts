@@ -15,7 +15,6 @@ const useGetPokemons = (from: number = 88, limit: number = 32) => {
         key
         num
         sprite
-        shinySprite
         weight
         height
         types {
@@ -50,7 +49,6 @@ const useGetPokemons = (from: number = 88, limit: number = 32) => {
   //   client: apolloClient,
   //   variables: { offset: from, take: limit },
   // });
-  console.log('useGetPokemons data: ', data);
 
   return {
     pokemons: data,

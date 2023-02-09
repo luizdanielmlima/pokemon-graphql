@@ -1,4 +1,3 @@
-import { Pokemon } from '@favware/graphql-pokemon';
 import React from 'react';
 import { statsColors } from '../../shared/colors';
 
@@ -14,10 +13,17 @@ interface BaseStats {
   speed: number;
 }
 
-const PokemonBaseStats = (props: Pokemon) => {
-  const { baseStats } = props;
-  console.log('baseStats: ', baseStats);
-  // const stats = data?.baseStats;
+const PokemonBaseStats = (props: BaseStats) => {
+  const {
+    attack,
+    defense,
+    hp,
+    specialattack,
+    specialdefense,
+    speed,
+  } = props;
+  console.log('attack: ', attack);
+  const stats = data?.stats;
 
   const getBarWidth = (value: number | undefined) => {
     let pct = '0';
@@ -39,28 +45,28 @@ const PokemonBaseStats = (props: Pokemon) => {
   };
 
   let content;
-  // if (stats) {
-  //   content = stats.map((item: any, index: number) => {
-  //     return (
-  //       <div
-  //         className={classes.statItem}
-  //         key={`${index}_${item.stat?.name}`}
-  //       >
-  //         <p className={classes.statItem__name}>{item.stat?.name}</p>
-  //         <div className={classes.statItem__mainbar}>
-  //           <div
-  //             className={classes.statItem__innerbar}
-  //             style={{
-  //               width: getBarWidth(item.base_stat),
-  //               backgroundColor: getBarColor(item.stat?.name),
-  //             }}
-  //           ></div>
-  //         </div>
-  //         <p className={classes.statItem__value}>{item.base_stat}</p>
-  //       </div>
-  //     );
-  //   });
-  // }
+  if (stats) {
+    content = stats.map((item: any, index: number) => {
+      return (
+        <div
+          className={classes.statItem}
+          key={`${index}_${item.stat?.name}`}
+        >
+          <p className={classes.statItem__name}>{item.stat?.name}</p>
+          <div className={classes.statItem__mainbar}>
+            <div
+              className={classes.statItem__innerbar}
+              style={{
+                width: getBarWidth(item.base_stat),
+                backgroundColor: getBarColor(item.stat?.name),
+              }}
+            ></div>
+          </div>
+          <p className={classes.statItem__value}>{item.base_stat}</p>
+        </div>
+      );
+    });
+  }
 
   return (
     <div

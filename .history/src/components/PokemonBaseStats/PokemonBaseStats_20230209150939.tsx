@@ -1,4 +1,3 @@
-import { Pokemon } from '@favware/graphql-pokemon';
 import React from 'react';
 import { statsColors } from '../../shared/colors';
 
@@ -14,10 +13,17 @@ interface BaseStats {
   speed: number;
 }
 
-const PokemonBaseStats = (props: Pokemon) => {
-  const { baseStats } = props;
-  console.log('baseStats: ', baseStats);
-  // const stats = data?.baseStats;
+const PokemonBaseStats = (props: BaseStats) => {
+  const {
+    attack,
+    defense,
+    hp,
+    specialattack,
+    specialdefense,
+    speed,
+  } = props;
+  console.log('attack: ', attack);
+  // const stats = data?.stats;
 
   const getBarWidth = (value: number | undefined) => {
     let pct = '0';

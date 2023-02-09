@@ -37,7 +37,7 @@ const Pokemon = (props: any) => {
 
       {pokemonError && <LoadingErrorFeedback mode="loading" />}
 
-      {!pokemonLoading && pokemon && (
+      {pokemon && (
         <>
           <button
             data-testid="back-button"

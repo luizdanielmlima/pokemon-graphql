@@ -26,8 +26,9 @@ const Pokemons = () => {
   console.log('pokemons: ', pokemons);
 
   const navToPokemonPage = (pkmon: Pokemon) => {
-    const id = pkmon.key;
-    navigate(`/pokemon/${id}`);
+    // context?.setCurPokemon(pkmon);
+    // const id = pkmon?.key?.toString();
+    // navigate(`/pokemon/${id}`);
   };
 
   let pokemonList;
@@ -37,7 +38,7 @@ const Pokemons = () => {
     pokemonList = data.map((pkmon: Pokemon) => {
       return (
         <PokemonCard
-          key={`${pkmon.num}_${pkmon.key}`}
+          key={pkmon.num}
           data={pkmon}
           clicked={() => navToPokemonPage(pkmon)}
           isOnList

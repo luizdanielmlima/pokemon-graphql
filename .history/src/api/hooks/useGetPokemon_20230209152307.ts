@@ -15,7 +15,6 @@ const useGetPokemon = (pokemonKey?: string | number) => {
           key
           num
           sprite
-          shinySprite
           weight
           height
           types {
@@ -49,7 +48,7 @@ const useGetPokemon = (pokemonKey?: string | number) => {
   console.log('useGetPokemon data: ', data);
 
   return {
-    pokemon: data,
+    pokemon: data?.data.getPokemon,
     pokemonLoading: loading,
     pokemonError: error,
   };

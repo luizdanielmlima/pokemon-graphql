@@ -20,7 +20,7 @@ const PokemonCard = (props: PokemonCardProps) => {
 
   const getPokemonColor = (colorName: string) => {
     const colorFound = pokemonTypeColors.find(
-      (item) => item.name === colorName.toLocaleLowerCase(),
+      (item) => item.name === colorName,
     );
     return colorFound ? colorFound.color : '#ddd';
   };

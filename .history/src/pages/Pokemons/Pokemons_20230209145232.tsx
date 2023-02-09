@@ -37,7 +37,7 @@ const Pokemons = () => {
     pokemonList = data.map((pkmon: Pokemon) => {
       return (
         <PokemonCard
-          key={`${pkmon.num}_${pkmon.key}`}
+          key={pkmon.num}
           data={pkmon}
           clicked={() => navToPokemonPage(pkmon)}
           isOnList

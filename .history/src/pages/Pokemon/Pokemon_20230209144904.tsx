@@ -21,7 +21,7 @@ const Pokemon = (props: any) => {
   const { pokemonLoading, pokemonError, pokemon } = useGetPokemon(
     params?.id,
   );
-  console.log('pokemon.getPokemon: ', pokemon?.getPokemon);
+  console.log('pokemon: ', pokemon);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,7 +37,7 @@ const Pokemon = (props: any) => {
 
       {pokemonError && <LoadingErrorFeedback mode="loading" />}
 
-      {!pokemonLoading && pokemon && (
+      {/* {pokemon && (
         <>
           <button
             data-testid="back-button"
@@ -46,13 +46,13 @@ const Pokemon = (props: any) => {
           >{`< Go Back`}</button>
           <main className={classes.content}>
             <PokemonCard
-              key={pokemon?.getPokemon?.id || 1}
-              data={pokemon?.getPokemon || null}
+              key={pokemon.getPokemon.num || 1}
+              data={pokemon.getPokemon || null}
               clicked={() => {}}
               isOnList={false}
             />
-            <PokemonBaseStats data={pokemon?.getPokemon || null} />
-            {/* <div className={classes.abilities}>
+            {/* <PokemonBaseStats data={pokemonData || null} />
+            <div className={classes.abilities}>
               <PokemonAbilities data={pokemonData || null} />
             </div>
             <PokemonMiscInfo data={pokemonData || null} />
@@ -60,7 +60,7 @@ const Pokemon = (props: any) => {
               <PokemonMoves data={pokemonData || null} />
             </div> */}
           </main>
-        </>
+        </> */}
       )}
     </div>
   );

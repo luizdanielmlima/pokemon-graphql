@@ -21,7 +21,7 @@ const Pokemon = (props: any) => {
   const { pokemonLoading, pokemonError, pokemon } = useGetPokemon(
     params?.id,
   );
-  console.log('pokemon.getPokemon: ', pokemon?.getPokemon);
+  console.log('pokemon: ', pokemon);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,7 +37,7 @@ const Pokemon = (props: any) => {
 
       {pokemonError && <LoadingErrorFeedback mode="loading" />}
 
-      {!pokemonLoading && pokemon && (
+      {pokemon && (
         <>
           <button
             data-testid="back-button"
@@ -51,7 +51,9 @@ const Pokemon = (props: any) => {
               clicked={() => {}}
               isOnList={false}
             />
-            <PokemonBaseStats data={pokemon?.getPokemon || null} />
+            <PokemonBaseStats
+              data={pokemon?.getPokemon.baseStats || null}
+            />
             {/* <div className={classes.abilities}>
               <PokemonAbilities data={pokemonData || null} />
             </div>

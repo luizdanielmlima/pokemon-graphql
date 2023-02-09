@@ -15,7 +15,6 @@ const useGetPokemons = (from: number = 88, limit: number = 32) => {
         key
         num
         sprite
-        shinySprite
         weight
         height
         types {

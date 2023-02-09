@@ -12,23 +12,10 @@ const useGetPokemon = (pokemonKey?: string | number) => {
   const GET_POKEMON = gql`
     {
         getPokemon(pokemon: ${pokemonKey}) {
-          key
-          num
           sprite
-          shinySprite
-          weight
-          height
-          types {
-            name
-          }
-          abilities {
-            first {
-              name
-            }
-            second {
-              name
-            }
-          }
+          num
+          species
+          color
           baseStats {
             attack
             defense
@@ -46,7 +33,6 @@ const useGetPokemon = (pokemonKey?: string | number) => {
   >(GET_POKEMON, {
     client: apolloClient,
   });
-  console.log('useGetPokemon data: ', data);
 
   return {
     pokemon: data,
