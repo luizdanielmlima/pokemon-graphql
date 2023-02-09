@@ -1,5 +1,8 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+
+import { mainContext } from '../../state/mainContext';
+import { PokemonDetailType } from '../../shared/model';
 
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
 import classes from './Pokemons.module.css';
@@ -12,6 +15,7 @@ import { Pokemon } from '@favware/graphql-pokemon';
 
 const Pokemons = () => {
   const navigate = useNavigate();
+  const context = useContext(mainContext);
 
   const [limit, setLimit] = useState(8); // has a total of 1118 pokemons!!
 
@@ -23,37 +27,13 @@ const Pokemons = () => {
     navigate(`/pokemon/${id}`);
   };
 
-  const [criteria, setCriteria] = useState<string>('num');
+  let pokemonList;
 
   // TO-DO: Must check this Typescript error, it shouldn't happen !
-  const orderedData = useMemo(() => {
-    let ordData: Pokemon[] = pokemons?.getAllPokemon
-      ? [...pokemons?.getAllPokemon]
-      : []; // reset
+  const data = pokemons?.getAllPokemon;
 
-    if (pokemons?.getAllPokemon) {
-      // here, a .map is used to separate the "main type" (the first on the array), to be used on the sort method
-      ordData = [...pokemons?.getAllPokemon]
-        .map((pokemon) => {
-          return {
-            ...pokemon,
-            mainType:
-              pokemon && pokemon.types ? pokemon.types[0].name : '',
-          };
-        })
-        .sort(dynamicSort(criteria));
-    }
-
-    return ordData;
-  }, [pokemons, criteria]);
-
-  const handleOrderBySelect = (selection: string) => {
-    setCriteria(selection);
-  };
-
-  let pokemonList;
-  if (orderedData && orderedData.length > 0) {
-    pokemonList = orderedData.map((pkmon: Pokemon) => {
+  if (data && data.length > 0) {
+    pokemonList = data.map((pkmon: Pokemon) => {
       return (
         <PokemonCard
           key={`${pkmon.num}_${pkmon.key}`}
@@ -75,9 +55,13 @@ const Pokemons = () => {
             data-testid="settings-bar"
             className={classes.settingsBar}
           >
+            <p>set limit here</p>
+            <p>order by here</p>
             <QueryBar
               queryLimit={limit}
-              setQueryLimit={(value: number) => setLimit(value)}
+              setQueryLimit={(value: number) =>
+                setNewQueryLimit(value)
+              }
             />
             <OrderByForm
               handleSelection={(selection: string) =>

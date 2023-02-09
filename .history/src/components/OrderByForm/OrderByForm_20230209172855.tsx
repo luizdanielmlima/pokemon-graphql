@@ -4,7 +4,7 @@ import classes from './OrderByForm.module.css';
 
 const OrderByForm = (props: any) => {
   const { handleSelection } = props;
-  const [selection, setSelection] = useState('num');
+  const [selection, setSelection] = useState('number');
 
   const changeHandler = (selectedOption: string) => {
     setSelection(selectedOption);

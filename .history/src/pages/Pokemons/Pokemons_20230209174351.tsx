@@ -45,7 +45,7 @@ const Pokemons = () => {
     }
 
     return ordData;
-  }, [pokemons, criteria]);
+  }, [pokemons, criteria, limit]);
 
   const handleOrderBySelect = (selection: string) => {
     setCriteria(selection);

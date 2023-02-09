@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
@@ -12,6 +12,7 @@ import { Pokemon } from '@favware/graphql-pokemon';
 
 const Pokemons = () => {
   const navigate = useNavigate();
+  const [orderedData, setOrderedData] = useState<Pokemon[]>();
 
   const [limit, setLimit] = useState(8); // has a total of 1118 pokemons!!
 
@@ -23,10 +24,12 @@ const Pokemons = () => {
     navigate(`/pokemon/${id}`);
   };
 
-  const [criteria, setCriteria] = useState<string>('num');
+  let pokemonList;
 
   // TO-DO: Must check this Typescript error, it shouldn't happen !
-  const orderedData = useMemo(() => {
+  const data = pokemons?.getAllPokemon;
+
+  const orderData = useCallback((criteria: string) => {
     let ordData: Pokemon[] = pokemons?.getAllPokemon
       ? [...pokemons?.getAllPokemon]
       : []; // reset
@@ -34,24 +37,23 @@ const Pokemons = () => {
     if (pokemons?.getAllPokemon) {
       // here, a .map is used to separate the "main type" (the first on the array), to be used on the sort method
       ordData = [...pokemons?.getAllPokemon]
-        .map((pokemon) => {
+        .map((item) => {
           return {
-            ...pokemon,
+            ...item,
             mainType:
-              pokemon && pokemon.types ? pokemon.types[0].name : '',
+              item && item.types ? item.types[0]?.type?.name : '',
           };
         })
         .sort(dynamicSort(criteria));
     }
 
-    return ordData;
-  }, [pokemons, criteria]);
+    setOrderedData(ordData);
+  }, []);
 
   const handleOrderBySelect = (selection: string) => {
-    setCriteria(selection);
+    orderData(selection);
   };
 
-  let pokemonList;
   if (orderedData && orderedData.length > 0) {
     pokemonList = orderedData.map((pkmon: Pokemon) => {
       return (
@@ -69,7 +71,7 @@ const Pokemons = () => {
     <>
       {pokemonsLoading && <LoadingErrorFeedback mode="loading" />}
       {pokemonsError && <LoadingErrorFeedback mode="error" />}
-      {!pokemonsLoading && !pokemonsLoading && pokemons && (
+      {!pokemonsLoading && !pokemonsLoading && orderedData && (
         <>
           <div
             data-testid="settings-bar"

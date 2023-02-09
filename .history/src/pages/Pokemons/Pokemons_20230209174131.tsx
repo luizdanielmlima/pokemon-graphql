@@ -47,6 +47,27 @@ const Pokemons = () => {
     return ordData;
   }, [pokemons, criteria]);
 
+  // const orderData = useCallback((criteria: string) => {
+  //   console.log('criteria: ', criteria);
+  //   let ordData: Pokemon[] = data ? [...data] : []; // reset
+
+  //   if (data) {
+  //     // here, a .map is used to separate the "main type" (the first on the array), to be used on the sort method
+  //     ordData = [...data]
+  //       .map((pokemon) => {
+  //         return {
+  //           ...pokemon,
+  //           mainType:
+  //             pokemon && pokemon.types ? pokemon.types[0].name : '',
+  //         };
+  //       })
+  //       .sort(dynamicSort(criteria));
+  //   }
+
+  //   console.log('ordData: ', ordData);
+  //   setOrderedData(ordData);
+  // }, []);
+
   const handleOrderBySelect = (selection: string) => {
     setCriteria(selection);
   };
