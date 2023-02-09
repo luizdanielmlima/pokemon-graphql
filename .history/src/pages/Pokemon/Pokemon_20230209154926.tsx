@@ -46,7 +46,7 @@ const Pokemon = (props: any) => {
           >{`< Go Back`}</button>
           <main className={classes.content}>
             <PokemonCard
-              key={`${pokemon?.getPokemon?.key}`}
+              key={pokemon?.getPokemon?.id || 1}
               data={pokemon?.getPokemon || null}
               clicked={() => {}}
               isOnList={false}

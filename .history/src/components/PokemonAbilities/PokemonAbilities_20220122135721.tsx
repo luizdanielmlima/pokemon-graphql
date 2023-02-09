@@ -1,5 +1,4 @@
-import { Pokemon } from '@favware/graphql-pokemon';
-import React, { FC } from 'react';
+import React from 'react';
 
 import {
   AbilityItem,
@@ -8,10 +7,9 @@ import {
 
 import classes from './PokemonAbilities.module.css';
 
-const PokemonAbilities: FC<{ data: Pokemon }> = ({ data }) => {
-  const abilitiesData = Object.entries(data?.abilities).filter(
-    (item) => item !== null && item[0] !== '__typename',
-  );
+const PokemonAbilities = (props: PokemonPageItemProps) => {
+  const { data } = props;
+  const abilitiesData = data?.abilities;
 
   const getColor = (isHidden: boolean | undefined) => {
     return isHidden ? '#95A6AE' : '#E1E9EC';
@@ -24,18 +22,18 @@ const PokemonAbilities: FC<{ data: Pokemon }> = ({ data }) => {
   let abilitiesContent;
   if (abilitiesData) {
     abilitiesContent = abilitiesData.map(
-      (ability: any, index: number) => {
+      (item: AbilityItem, index: number) => {
         return (
           <div
             className={classes.abilityItem}
-            key={`${index}`}
+            key={`${index}_${item.ability?.name}`}
             style={{
-              backgroundColor: getColor(ability[0] === 'hidden'),
-              color: getFontColor(ability[0] === 'hidden'),
+              backgroundColor: getColor(item?.is_hidden),
+              color: getFontColor(item?.is_hidden),
             }}
           >
             <p className={classes.abilityItem__name}>
-              {ability[1]?.name}
+              {item.ability?.name}
             </p>
           </div>
         );

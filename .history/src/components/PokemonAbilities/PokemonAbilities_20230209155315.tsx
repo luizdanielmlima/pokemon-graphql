@@ -9,9 +9,7 @@ import {
 import classes from './PokemonAbilities.module.css';
 
 const PokemonAbilities: FC<{ data: Pokemon }> = ({ data }) => {
-  const abilitiesData = Object.entries(data?.abilities).filter(
-    (item) => item !== null && item[0] !== '__typename',
-  );
+  const abilitiesData = data?.abilities;
 
   const getColor = (isHidden: boolean | undefined) => {
     return isHidden ? '#95A6AE' : '#E1E9EC';
@@ -23,24 +21,22 @@ const PokemonAbilities: FC<{ data: Pokemon }> = ({ data }) => {
 
   let abilitiesContent;
   if (abilitiesData) {
-    abilitiesContent = abilitiesData.map(
-      (ability: any, index: number) => {
+    abilitiesContent = Object.entries(abilitiesData)
+      .filter((item) => item[0] !== '__typename')
+      .map((ability: any, index: number) => {
         return (
           <div
             className={classes.abilityItem}
-            key={`${index}`}
+            key={`${index}_${ability.ability?.name}`}
             style={{
-              backgroundColor: getColor(ability[0] === 'hidden'),
-              color: getFontColor(ability[0] === 'hidden'),
+              backgroundColor: getColor(ability.is_hidden),
+              color: getFontColor(ability.is_hidden),
             }}
           >
-            <p className={classes.abilityItem__name}>
-              {ability[1]?.name}
-            </p>
+            <p className={classes.abilityItem__name}>{ability[0]}</p>
           </div>
         );
-      },
-    );
+      });
   }
 
   return (

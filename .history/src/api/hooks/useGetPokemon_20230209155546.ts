@@ -32,8 +32,7 @@ const useGetPokemon = (pokemonKey?: string | number) => {
               name
             }
             special {
-              name
-            }
+              n
           }
           baseStats {
             attack

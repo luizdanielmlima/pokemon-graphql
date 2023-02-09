@@ -9,9 +9,11 @@ import {
 import classes from './PokemonAbilities.module.css';
 
 const PokemonAbilities: FC<{ data: Pokemon }> = ({ data }) => {
+  console.log('PokemonAbilities data: ', data);
   const abilitiesData = Object.entries(data?.abilities).filter(
     (item) => item !== null && item[0] !== '__typename',
   );
+  console.log('abilitiesData: ', abilitiesData);
 
   const getColor = (isHidden: boolean | undefined) => {
     return isHidden ? '#95A6AE' : '#E1E9EC';
