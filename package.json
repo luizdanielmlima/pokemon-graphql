@@ -9,10 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.7",
+    "graphql": "^15.8.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
+    "@apollo/react-hooks": "^4.0.0",
+    "@favware/graphql-pokemon": "^7.1.2",
+    "@types/graphql": "^14.5.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",

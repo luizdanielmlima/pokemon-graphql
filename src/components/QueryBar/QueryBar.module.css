@@ -1,0 +1,29 @@
+@import '../../css/variables.css';
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form,
+.inputAndButton {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .form {
+    flex-direction: column;
+  }
+
+  .form > select {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .formContainer {
+    margin-bottom: 16px;
+  }
+}

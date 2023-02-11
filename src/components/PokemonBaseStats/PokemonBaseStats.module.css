@@ -1,0 +1,39 @@
+@import '../../css/variables.css';
+
+.stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.statItem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 104px 1fr 20px;
+  align-content: center;
+}
+
+.statItem:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.statItem__value {
+  font-weight: bold;
+  color: var(--font-color-tertiary);
+}
+
+.statItem__mainbar {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px;
+  height: 24px;
+  margin: 0 12px;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.statItem__innerbar {
+  border-radius: 2px;
+  background-color: var(--font-color-tertiary);
+  width: 0%;
+}
