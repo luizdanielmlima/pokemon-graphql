@@ -68,17 +68,15 @@ const useGetPokemon = (pokemonKey?: string | number) => {
     }
     `;
 
-  // TO-DO: this is the suggested Type on graphql-pokemon docs, but it shows erros when being used
   // const { loading, error, data } = useQuery<GraphQLPokemonResponse<"getPokemon">>(GET_POKEMON, {
   //   client: apolloClient,
   // });
-
   const { loading, error, data } = useQuery<Record<"getPokemon", Pokemon>>(GET_POKEMON, {
     client: apolloClient,
   });
 
   return {
-    pokemon: data,
+    pokemon: data as Record<string, Pokemon>,
     pokemonLoading: loading,
     pokemonError: error,
   };

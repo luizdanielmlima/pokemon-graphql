@@ -35,9 +35,14 @@ const PokemonMoves: FC<PokemonMoves> = ({ moves }) => {
   };
 
   const getPokemonColor = (colorName: string) => {
-    const colorFound = pokemonTypeColors.find((item) => item.name === colorName.toLowerCase());
+    const colorFound = pokemonTypeColors.find((item) => item.name === colorName);
     return colorFound ? colorFound.color : "#ddd";
   };
+
+  // const getDescription = () => {
+  //   const enEntry = moveData?.flavor_text_entries.find((textItem: FlavorTextEntry) => textItem.language.name === "en");
+  //   return enEntry?.flavor_text;
+  // };
 
   let movesList;
   if (moves) {
@@ -71,22 +76,26 @@ const PokemonMoves: FC<PokemonMoves> = ({ moves }) => {
           <p className={classes.detail__title}>{moveData?.name}</p>
           <p
             style={{
-              backgroundColor: getPokemonColor(moveData.type),
+              backgroundColor: getPokemonColor(moveData.key),
               padding: "0 6px",
               borderRadius: "5px",
             }}
           >
-            {moveData?.type}
+            {moveData?.name}
           </p>
         </div>
         <div className={`${classes.detail__line} ${classes.flexRowCenter}`}>
           <PokemonMovesItem label={`Power:`} value={moveData?.basePower ? moveData.basePower : "-"} />
           <PokemonMovesItem label={`Accuracy:`} value={moveData?.accuracy ? moveData.accuracy : "-"} />
           <PokemonMovesItem label={`PP:`} value={moveData?.pp ? moveData.pp : "-"} />
+          {/* <PokemonMovesItem
+            label={`Damage class:`}
+            value={moveData.damage_class.name ? moveData.damage_class.name : "-"}
+          /> */}
         </div>
         <div>
           <p>Description:</p>
-          <p className={`${classes.detail__value}`}>{moveData.shortDesc ? moveData.shortDesc : "-"}</p>
+          <p className={`${classes.detail__value}`}>{moveData.desc ? moveData.desc : "-"}</p>
         </div>
       </div>
     );

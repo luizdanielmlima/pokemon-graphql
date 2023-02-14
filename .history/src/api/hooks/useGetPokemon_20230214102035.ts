@@ -1,5 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
-import type { Query, Pokemon } from "@favware/graphql-pokemon";
+import type { Query } from "@favware/graphql-pokemon";
 import { apolloClient } from "../../api/pokemon-apollo-client";
 
 interface GraphQLPokemonResponse<K extends keyof Omit<Query, "__typename">> {
@@ -46,36 +46,18 @@ const useGetPokemon = (pokemonKey?: string | number) => {
             specialdefense
             speed
           }
-          learnsets {
-            generation3 {
-              eventMoves {
-                generation
-                move {
-                  category
-                  accuracy
-                  basePower
-                  desc
-                  shortDesc
-                  key
-                  name
-                  pp
-                  type
-                }
-              }
-            }
+          moves {
+            key
+            desc
           }
         }
     }
     `;
 
-  // TO-DO: this is the suggested Type on graphql-pokemon docs, but it shows erros when being used
-  // const { loading, error, data } = useQuery<GraphQLPokemonResponse<"getPokemon">>(GET_POKEMON, {
-  //   client: apolloClient,
-  // });
-
-  const { loading, error, data } = useQuery<Record<"getPokemon", Pokemon>>(GET_POKEMON, {
+  const { loading, error, data } = useQuery<GraphQLPokemonResponse<"getPokemon">>(GET_POKEMON, {
     client: apolloClient,
   });
+  // console.log('useGetPokemon data: ', data);
 
   return {
     pokemon: data,

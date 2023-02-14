@@ -35,7 +35,8 @@ const PokemonMoves: FC<PokemonMoves> = ({ moves }) => {
   };
 
   const getPokemonColor = (colorName: string) => {
-    const colorFound = pokemonTypeColors.find((item) => item.name === colorName.toLowerCase());
+    console.log("getPokemonColor|colorName: ", colorName);
+    const colorFound = pokemonTypeColors.find((item) => item.name === colorName);
     return colorFound ? colorFound.color : "#ddd";
   };
 
@@ -71,12 +72,12 @@ const PokemonMoves: FC<PokemonMoves> = ({ moves }) => {
           <p className={classes.detail__title}>{moveData?.name}</p>
           <p
             style={{
-              backgroundColor: getPokemonColor(moveData.type),
+              backgroundColor: getPokemonColor(moveData.key),
               padding: "0 6px",
               borderRadius: "5px",
             }}
           >
-            {moveData?.type}
+            {moveData?.name}
           </p>
         </div>
         <div className={`${classes.detail__line} ${classes.flexRowCenter}`}>
