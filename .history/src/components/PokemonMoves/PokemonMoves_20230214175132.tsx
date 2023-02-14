@@ -35,7 +35,8 @@ const PokemonMoves: FC<PokemonMoves> = ({ moves }) => {
   };
 
   const getPokemonColor = (colorName: string) => {
-    const colorFound = pokemonTypeColors.find((item) => item.name === colorName.toLowerCase());
+    console.log("getPokemonColor|colorName: ", colorName);
+    const colorFound = pokemonTypeColors.find((item) => item.name === colorName);
     return colorFound ? colorFound.color : "#ddd";
   };
 

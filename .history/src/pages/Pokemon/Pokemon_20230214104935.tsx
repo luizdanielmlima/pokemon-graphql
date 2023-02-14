@@ -2,10 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { mainContext } from "../../state/mainContext";
-import type { LearnsetMove } from "@favware/graphql-pokemon";
+import PokemonCard from "../../components/PokemonCard/PokemonCard";
 
 import classes from "./Pokemon.module.css";
-import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import PokemonBaseStats from "../../components/PokemonBaseStats/PokemonBaseStats";
 import PokemonAbilities from "../../components/PokemonAbilities/PokemonAbilities";
 import PokemonMiscInfo from "../../components/PokemonMiscInfo/PokemonMiscInfo";
@@ -51,13 +50,8 @@ const Pokemon = (props: any) => {
               <PokemonAbilities data={pokemon?.getPokemon || null} />
             </div>
             <PokemonMiscInfo data={pokemon?.getPokemon || null} />
-
-            {pokemon?.getPokemon?.learnsets?.generation3?.eventMoves &&
-              pokemon?.getPokemon?.learnsets?.generation3?.eventMoves.length > 0}
             <div className={classes.moves}>
-              <PokemonMoves
-                moves={(pokemon?.getPokemon?.learnsets?.generation3?.eventMoves as LearnsetMove[]) || null}
-              />
+              <PokemonMoves data={pokemon?.getPokemon || null} />
             </div>
           </main>
         </>

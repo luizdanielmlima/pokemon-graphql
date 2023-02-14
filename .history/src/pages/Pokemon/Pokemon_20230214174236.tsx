@@ -56,7 +56,7 @@ const Pokemon = (props: any) => {
               pokemon?.getPokemon?.learnsets?.generation3?.eventMoves.length > 0}
             <div className={classes.moves}>
               <PokemonMoves
-                moves={(pokemon?.getPokemon?.learnsets?.generation3?.eventMoves as LearnsetMove[]) || null}
+                data={(pokemon?.getPokemon?.learnsets?.generation3?.eventMoves as LearnsetMove[]) || null}
               />
             </div>
           </main>

@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 import { Pokemon } from "@favware/graphql-pokemon";
 
+import { PokemonPageItemProps } from "../../shared/model";
 import classes from "./PokemonMiscInfo.module.css";
 
 interface InfoItemProps {

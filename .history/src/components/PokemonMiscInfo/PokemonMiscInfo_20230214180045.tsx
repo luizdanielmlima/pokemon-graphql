@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 import { Pokemon } from "@favware/graphql-pokemon";
 
+import { PokemonPageItemProps } from "../../shared/model";
 import classes from "./PokemonMiscInfo.module.css";
 
 interface InfoItemProps {
@@ -24,7 +25,7 @@ const InfoItem = (props: InfoItemProps) => {
 const PokemonMiscInfo: FC<{ data: Pokemon }> = ({ data }) => {
   const convUnit = (value: number | undefined) => {
     //   height is in decimeters and weight is in hectograms!
-    return value ? (value / 10).toFixed(2) : null;
+    return value ? Math.round(value / 10).toFixed(2) : null;
   };
 
   return (
