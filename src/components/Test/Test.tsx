@@ -1,10 +1,9 @@
 // Component
-import React from 'react';
-import useGetPokemons from '../../api/hooks/useGetPokemons';
+import React from "react";
+import useGetPokemons from "../../api/hooks/useGetPokemons";
 
 const Test = () => {
-  const { pokemonsLoading, pokemonsError, pokemons } =
-    useGetPokemons();
+  const { pokemonsLoading, pokemonsError, pokemons } = useGetPokemons();
 
   if (pokemonsLoading) return <p>'Loading...'</p>;
   if (pokemonsError) return <p>`Error! ${pokemonsError.message}`</p>;

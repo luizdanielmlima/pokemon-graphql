@@ -1,5 +1,8 @@
 name: CI/CD PR Workflow
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -19,14 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build code
-        run: npm run build
-
       - name: ESLint
         run: npm run style:lint
 
       - name: Prettier
         run: npm run style:prettier
 
-      # - name: Deploy project
-      #   run: echo "Deploying..."
+      - name: Build code
+        run: npm run build
+
+      - name: Deploy project
+        run: echo "Deploying..."

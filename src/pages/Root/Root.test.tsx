@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import RootPage from './Root';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import RootPage from "./Root";
 
 const MockRoot = () => {
   return (
@@ -11,18 +11,17 @@ const MockRoot = () => {
   );
 };
 
-test('Root page test', () => {
+test("Root page test", () => {
   render(<MockRoot />);
 
   // Test the main logo img
-  const logoElement = screen.getByTestId('headerLogo');
+  const logoElement = screen.getByTestId("headerLogo");
   expect(logoElement).toBeInTheDocument();
-  expect(logoElement).toHaveAttribute('alt');
-  expect(logoElement).toHaveAttribute('src');
+  expect(logoElement).toHaveAttribute("alt");
+  expect(logoElement).toHaveAttribute("src");
 
   // Test Link to Author page in the Footer
-  const linkToAuthorPageElement =
-    screen.getByTestId('authorPageLink');
+  const linkToAuthorPageElement = screen.getByTestId("authorPageLink");
   expect(linkToAuthorPageElement).toBeInTheDocument();
   expect(linkToAuthorPageElement).toHaveAccessibleDescription();
 });

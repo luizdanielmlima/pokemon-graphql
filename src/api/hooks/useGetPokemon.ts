@@ -1,6 +1,6 @@
-import { useQuery, gql } from '@apollo/client';
-import type { Pokemon } from '@favware/graphql-pokemon';
-import { apolloClient } from '../../api/pokemon-apollo-client';
+import { useQuery, gql } from "@apollo/client";
+import type { Pokemon } from "@favware/graphql-pokemon";
+import { apolloClient } from "../../api/pokemon-apollo-client";
 
 // interface GraphQLPokemonResponse<K extends keyof Omit<Query, "__typename">> {
 //   data: Record<K, Omit<Query[K], "__typename">>;
@@ -73,7 +73,7 @@ const useGetPokemon = (pokemonKey?: string | number) => {
   //   client: apolloClient,
   // });
 
-  const { loading, error, data } = useQuery<Record<'getPokemon', Pokemon>>(GET_POKEMON, {
+  const { loading, error, data } = useQuery<Record<"getPokemon", Pokemon>>(GET_POKEMON, {
     client: apolloClient,
   });
 

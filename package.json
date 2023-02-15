@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "style:all": "tsc && npm run style:lint && npm run style:prettier",
     "style:lint": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'"
+    "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'",
+    "make-pretty": "prettier --write '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@apollo/client": "^3.7.7",
@@ -29,9 +30,9 @@
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "eslint": "^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
@@ -40,6 +41,12 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.3",
-    "vite": "^4.1.0"
+    "vite": "^4.1.0",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
   }
 }

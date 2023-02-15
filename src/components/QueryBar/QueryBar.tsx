@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import classes from './QueryBar.module.css';
+import classes from "./QueryBar.module.css";
 
 const QueryBar = (props: any) => {
   const { queryLimit, setQueryLimit } = props;
@@ -16,7 +16,7 @@ const QueryBar = (props: any) => {
     // although the number of pokemons available is not that dynamic...
     // this will update the number if a pokemon is added
     // on Jan 21st the max number is 1118...
-    const max = localStorage.getItem('maxNumOfPokemons');
+    const max = localStorage.getItem("maxNumOfPokemons");
     setMaxOfPokemons(max ? +max : 1118);
   };
 
@@ -31,24 +31,11 @@ const QueryBar = (props: any) => {
 
   return (
     <div className={classes.formContainer}>
-      <form
-        data-testid="query-form"
-        onSubmit={changeLimit}
-        className={classes.form}
-      >
+      <form data-testid="query-form" onSubmit={changeLimit} className={classes.form}>
         <label>{`Search limit (up to ${maxOfPokemons} pokemons!) :`}</label>
         <div className={classes.inputAndButton}>
-          <input
-            data-testid="query-form-input"
-            type="number"
-            value={enteredLimit}
-            onChange={limitChangeHandler}
-          />
-          <button
-            data-testid="query-form-reload-btn"
-            type="submit"
-            className="button"
-          >
+          <input data-testid="query-form-input" type="number" value={enteredLimit} onChange={limitChangeHandler} />
+          <button data-testid="query-form-reload-btn" type="submit" className="button">
             Reload
           </button>
         </div>
