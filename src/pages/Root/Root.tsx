@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { Route, Routes, useNavigate } from "react-router";
+import React from 'react';
+import { Route, Routes, useNavigate } from 'react-router';
 
 // images
-import logo from "../../assets/PokemonBrowser_logo.png";
-import pokemonsLeft from "../../assets/Banner_Pokemon_Left.png";
-import popkemonsRight from "../../assets/Banner_Pokemon_Right.png";
+import logo from '../../assets/PokemonBrowser_logo.png';
+import pokemonsLeft from '../../assets/Banner_Pokemon_Left.png';
+import popkemonsRight from '../../assets/Banner_Pokemon_Right.png';
 
-import Pokemons from "../Pokemons/Pokemons";
-import Pokemon from "../Pokemon/Pokemon";
-import classes from "./Root.module.css";
+import Pokemons from '../Pokemons/Pokemons';
+import Pokemon from '../Pokemon/Pokemon';
+import classes from './Root.module.css';
 
 const RootPage = () => {
   const navigate = useNavigate();
 
   return (
     <div className={classes.appContainer}>
-      <header className={classes.appHeader} onClick={() => navigate("/")}>
+      <header className={classes.appHeader} onClick={() => navigate('/')}>
         <img className={classes.appHeader__avatarsLeft} src={pokemonsLeft} alt="Pokemon Browser Logo" />
         <img className={classes.appHeader__logo} data-testid="headerLogo" src={logo} alt="Pokemon Browser Logo" />
         <img className={classes.appHeader__avatarsRight} src={popkemonsRight} alt="Pokemon Browser Logo" />

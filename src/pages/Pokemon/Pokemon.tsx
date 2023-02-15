@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import type { LearnsetMove } from "@favware/graphql-pokemon";
@@ -12,7 +12,7 @@ import PokemonMoves from "../../components/PokemonMoves/PokemonMoves";
 import LoadingErrorFeedback from "../../components/LoadingErrorFeedback/LoadingErrorFeedback";
 import useGetPokemon from "../../api/hooks/useGetPokemon";
 
-const Pokemon = (props: any) => {
+const Pokemon = () => {
   let params = useParams();
   const navigate = useNavigate();
 
