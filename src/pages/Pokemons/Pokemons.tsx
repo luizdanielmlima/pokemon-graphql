@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { Pokemon } from "@favware/graphql-pokemon";
@@ -42,7 +42,6 @@ const Pokemons = () => {
     }
   };
 
-  // TO-DO: Must check this Typescript error, it shouldn't happen !
   const orderedData = useMemo(() => {
     let ordData: Pokemon[] = pokemons?.getAllPokemon ? [...pokemons?.getAllPokemon] : []; // reset
 

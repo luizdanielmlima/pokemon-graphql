@@ -1,9 +1,8 @@
-import { Pokemon } from '@favware/graphql-pokemon';
-import React, { useState } from 'react';
-import { pokemonTypeColors } from '../../shared/colors';
+import { Pokemon } from "@favware/graphql-pokemon";
+import React, { useState } from "react";
+import { pokemonTypeColors } from "../../shared/colors";
 
-import { PokemonDetailType, Type } from '../../shared/model';
-import classes from './PokemonCard.module.css';
+import classes from "./PokemonCard.module.css";
 
 interface PokemonCardProps {
   clicked: () => {} | void;
@@ -13,27 +12,23 @@ interface PokemonCardProps {
 
 const PokemonCard = (props: PokemonCardProps) => {
   const data = props.data;
-  const [avatar, setAvatar] = useState<
-    'front_default' | 'front_shiny'
-  >('front_default');
+  const [avatar, setAvatar] = useState<"front_default" | "front_shiny">("front_default");
 
   const getPokemonColor = (colorName: string) => {
-    const colorFound = pokemonTypeColors.find(
-      (item) => item.name === colorName.toLocaleLowerCase(),
-    );
-    return colorFound ? colorFound.color : '#ddd';
+    const colorFound = pokemonTypeColors.find((item) => item.name === colorName.toLocaleLowerCase());
+    return colorFound ? colorFound.color : "#ddd";
   };
 
   const getAvatarUrl = () => {
     let avatarUrl = data?.sprite;
-    if (avatar === 'front_shiny') {
+    if (avatar === "front_shiny") {
       avatarUrl = data?.shinySprite;
     }
     return avatarUrl;
   };
 
   const getSwitchColor = (mode: string) => {
-    return mode === avatar ? '#395faa' : '#3f484b';
+    return mode === avatar ? "#395faa" : "#3f484b";
   };
 
   let pokemonContent;
@@ -64,16 +59,16 @@ const PokemonCard = (props: PokemonCardProps) => {
         <div className={classes.pokemon__switch}>
           <p
             className={classes.pokemon__switchLabel}
-            onClick={() => setAvatar('front_default')}
-            style={{ color: `${getSwitchColor('front_default')}` }}
+            onClick={() => setAvatar("front_default")}
+            style={{ color: `${getSwitchColor("front_default")}` }}
           >
             normal
           </p>
           <p className={classes.pokemon__switchSep}>|</p>
           <p
             className={classes.pokemon__switchLabel}
-            onClick={() => setAvatar('front_shiny')}
-            style={{ color: `${getSwitchColor('front_shiny')}` }}
+            onClick={() => setAvatar("front_shiny")}
+            style={{ color: `${getSwitchColor("front_shiny")}` }}
           >
             shiny
           </p>
@@ -84,9 +79,7 @@ const PokemonCard = (props: PokemonCardProps) => {
     pokemonContent = (
       <div
         data-testid="pokemon-content-card"
-        className={`${classes.pokemon} ${
-          props.isOnList ? classes.hoverCard : null
-        }`}
+        className={`${classes.pokemon} ${props.isOnList ? classes.hoverCard : null}`}
         onClick={props.clicked}
       >
         <div className={classes.pokemon__info}>
@@ -95,11 +88,7 @@ const PokemonCard = (props: PokemonCardProps) => {
         </div>
         <div className={classes.pokemon__img}>
           {avatarSwitcher}
-          <img
-            loading="lazy"
-            src={`${getAvatarUrl()}`}
-            alt="pokemon avatar"
-          />
+          <img loading="lazy" src={`${getAvatarUrl()}`} alt="pokemon avatar" />
         </div>
         <div className={classes.pokemon__types}>{typesContent}</div>
       </div>

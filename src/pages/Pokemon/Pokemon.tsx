@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { mainContext } from "../../state/mainContext";
 import type { LearnsetMove } from "@favware/graphql-pokemon";
 
 import classes from "./Pokemon.module.css";
@@ -13,14 +12,11 @@ import PokemonMoves from "../../components/PokemonMoves/PokemonMoves";
 import LoadingErrorFeedback from "../../components/LoadingErrorFeedback/LoadingErrorFeedback";
 import useGetPokemon from "../../api/hooks/useGetPokemon";
 
-const Pokemon = (props: any) => {
+const Pokemon = () => {
   let params = useParams();
   const navigate = useNavigate();
-  const context = useContext(mainContext);
 
   const { pokemonLoading, pokemonError, pokemon } = useGetPokemon(params?.id);
-  // TO-DO: Must check this Typescript error, it shouldn't happen !
-  // console.log('pokemon.getPokemon: ', pokemon?.getPokemon);
 
   useEffect(() => {
     window.scrollTo(0, 0);
