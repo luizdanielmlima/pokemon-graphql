@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Pokemon from './Pokemon';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import Pokemon from "./Pokemon";
+import { BrowserRouter } from "react-router-dom";
 
 const MockPokemon = () => {
   return (
@@ -11,21 +11,19 @@ const MockPokemon = () => {
   );
 };
 
-describe('Pokemon page test', () => {
-  it('should render the loading feedback', () => {
+describe("Pokemon page test", () => {
+  it("should render the loading feedback", () => {
     render(<MockPokemon />);
-    const loadingDivEl = screen.getByTestId('loading-container');
+    const loadingDivEl = screen.getByTestId("loading-container");
     expect(loadingDivEl).toBeInTheDocument();
   });
 
-  it('should render the Pokemon content', async () => {
+  it("should render the Pokemon content", async () => {
     render(<MockPokemon />);
-    const backButtonEl = await screen.findByTestId('back-button');
+    const backButtonEl = await screen.findByTestId("back-button");
     expect(backButtonEl).toBeInTheDocument();
 
-    const pokemonPageElements = await screen.findAllByTestId(
-      /pokemon-content/i,
-    );
+    const pokemonPageElements = await screen.findAllByTestId(/pokemon-content/i);
     expect(pokemonPageElements.length).toBe(4);
   });
 });

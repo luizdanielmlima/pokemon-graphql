@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "style:all": "tsc && npm run style:lint && npm run style:prettier",
     "style:lint": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'"
+    "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'",
+    "make-pretty": "prettier --write '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@apollo/client": "^3.7.7",

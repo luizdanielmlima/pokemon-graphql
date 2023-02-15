@@ -2,7 +2,7 @@
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["error", { "singleQuote": true }],
+    "prettier/prettier": "error",
     "no-unused-vars": "off",
     "no-console": "off",
     "func-names": "off",
