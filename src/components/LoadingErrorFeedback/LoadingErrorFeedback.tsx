@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import pikachu from '../../assets/pikachu.png';
-import error from '../../assets/error.png';
+import pikachu from "../../assets/pikachu.png";
+import error from "../../assets/error.png";
 
-import classes from './LoadingErrorFeedback.module.css';
+import classes from "./LoadingErrorFeedback.module.css";
 
 interface FeedbackProps {
   mode: string;
@@ -11,12 +11,9 @@ interface FeedbackProps {
 
 const LoadingErrorFeedback = (props: FeedbackProps) => {
   const { mode } = props;
-  const feedbackImg = mode === 'loading' ? pikachu : error;
-  const feedbackColor = mode === 'loading' ? '#223a6b' : '#EE3131';
-  const feedbackMsg =
-    mode === 'loading'
-      ? 'loading data...'
-      : 'An error occured... Please reload the page';
+  const feedbackImg = mode === "loading" ? pikachu : error;
+  const feedbackColor = mode === "loading" ? "#223a6b" : "#EE3131";
+  const feedbackMsg = mode === "loading" ? "loading data..." : "An error occured... Please reload the page";
 
   return (
     <div data-testid="loading-container" className={classes.feedback}>
