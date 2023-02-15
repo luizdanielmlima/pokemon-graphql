@@ -42,7 +42,6 @@ const Pokemons = () => {
     }
   };
 
-  // TO-DO: Must check this Typescript error, it shouldn't happen !
   const orderedData = useMemo(() => {
     let ordData: Pokemon[] = pokemons?.getAllPokemon ? [...pokemons?.getAllPokemon] : []; // reset
 

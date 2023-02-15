@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "style:all": "tsc && npm run style:lint && npm run style:prettier",
+    "style:lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@apollo/client": "^3.7.7",
@@ -18,7 +21,10 @@
   "devDependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "@favware/graphql-pokemon": "^7.1.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@types/graphql": "^14.5.0",
+    "@types/jest": "^29.4.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
